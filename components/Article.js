@@ -102,6 +102,53 @@ const data = [
 
     <span class="expandButton">+</span>
   </div>
+  */
+
+  function articleMaker (object){
+    const newArticle = document.createElement('div')
+      newArticle.classList.add('article')
+      newArticle.style.paddingBottom = '80px'
+
+    const newH2 = document.createElement('h2')
+      newH2.textContent = object.title
+
+    const pDate = document.createElement('p')
+      pDate.classList.add('date')
+      pDate.textContent = object.date
+
+    const p1 = document.createElement('p')
+      p1.textContent = object.firstParagraph
+
+    const p2 = document.createElement('p')
+      p2.textContent = object.secondParagraph
+
+    const p3 = document.createElement('p')
+      p3.textContent = object.thirdParagraph
+
+    const span = document.createElement('span')
+      span.classList.add('expandButton')
+      span.textContent = 'click here to resize'
+      span.addEventListener('click', () =>{
+        newArticle.classList.toggle('article-open')
+      })
+
+    newArticle.append(newH2, pDate, p1, p2, p3, span)
+
+    return newArticle
+  }
+
+  const articles = document.querySelector('.articles')
+
+  /*
+  articles.append(articleMaker(data[0]))
+  articles.append(articleMaker(data[1]))
+  articles.append(articleMaker(data[2]))
+  articles.append(articleMaker(data[3]))
+  */
+
+
+
+  /*
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
@@ -114,3 +161,22 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+data.push({
+  title: 'Maxwells New Article',
+  date: 'Jan 1st, 3020',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+        hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+        Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+        hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+        hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+        hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+        Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+        Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+})
+
+data.map(article => articles.append(articleMaker(article)))
