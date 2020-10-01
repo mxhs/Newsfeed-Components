@@ -139,6 +139,8 @@ const data = [
 
   const articles = document.querySelector('.articles')
 
+  console.log(articles)
+
   /*
   articles.append(articleMaker(data[0]))
   articles.append(articleMaker(data[1]))
@@ -180,3 +182,5 @@ data.push({
 })
 
 data.map(article => articles.append(articleMaker(article)))
+
+console.log(Event)
